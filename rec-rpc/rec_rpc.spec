@@ -5,7 +5,7 @@ Summary: REC's Qt based RPC library
 
 License: Unknown
 URL: http://openrobotino.org/
-Source0: http://packages2.openrobotino.org/pool/xenial/main/r/rec-rpc/rec-rpc_1.6.1_amd64.deb
+Source0: https://packages2.openrobotino.org/pool/xenial/main/r/rec-rpc/rec-rpc_1.6.1_amd64.deb
 Source1: RecRpcConfig.cmake
 
 # Define the architecture
