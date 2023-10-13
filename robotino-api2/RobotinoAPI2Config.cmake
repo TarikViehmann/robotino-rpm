@@ -1,0 +1,32 @@
+if(NOT ROBOTINOAPI2_DIR)
+  set( ROBOTINOAPI2_DIR "/usr" )
+  endif()
+# Define package variables
+set(ROBOTINOAPI2_INCLUDE_DIRS "${CMAKE_INSTALL_PREFIX}/include")
+set(ROBOTINOAPI2_LIBRARY_DIRS "${CMAKE_INSTALL_PREFIX}/lib64")
+set(ROBOTINOAPI2_BIN_DIRS "${CMAKE_INSTALL_PREFIX}/bin")
+
+# Set the found flag
+
+find_library(
+  REC_ROBOTINO_API2_RELEASE_LIBRARY
+  NAMES rec_robotino_api2
+  PATHS "${ROBOTINOAPI2_LIBRARY_DIRS}"
+)
+find_path(
+   ROBOTINOAPI2_INCLUDE_DIRS
+   NAMES
+   rec/robotino/api2/Com.h
+   PATHS
+   ${ROBOTINOAPI2_DIR}/include
+   NO_DEFAULT_PATH
+)
+if(ROBOTINOAPI2_INCLUDE_DIRS AND REC_ROBOTINO_API2_RELEASE_LIBRARY)
+  set(REC_ROBOTINO_API2_LIBRARY ${REC_ROBOTINO_API2_RELEASE_LIBRARY})
+  set(ROBOTINOAPI2_FOUND TRUE)
+endif()
+# Export targets
+add_library(rec_robotino_api2 INTERFACE)
+target_include_directories(rec_robotino_api2 INTERFACE "${ROBOTINOAPI2_INCLUDE_DIRS}")
+target_link_directories(rec_robotino_api2 INTERFACE "${ROBOTINOAPI2_LIBRARY_DIRS}")
+
