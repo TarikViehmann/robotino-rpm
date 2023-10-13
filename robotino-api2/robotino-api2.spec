@@ -14,14 +14,9 @@ Requires: rec-rpc
 Requires: robotino-dev
 %description
 Robotion API version 2
-%prep
-rm -dr %{_builddir}/robotino_api2
-mkdir %{_builddir}/robotino_api2
-dpkg-deb -x %{SOURCE0} %{_builddir}/robotino_api2
-cd %{_builddir}/robotino_api2/
 # Install section
 %install
-cp -r  %{_builddir}/robotino_api2/* %{buildroot}
+dpkg-deb -x %{SOURCE0} %{buildroot}
 cp %{SOURCE1} %{buildroot}/
 # Extract files from the deb package
 # Create necessary directories
